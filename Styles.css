@@ -1,0 +1,158 @@
+:root{
+    --bg-a:#2E21A0;
+    --bg-b:#150E42;
+    --text:#FFFFFF;
+    --muted:#B6ACEF;
+    --accent:#ABDD3C;
+    --border:rgba(255,255,255,0.14);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 50% -10%, var(--bg-a) 0%, var(--bg-b) 65%);
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:32px;
+    overflow:hidden;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:480px;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .logo{
+    display:block;
+    width:104px;
+    height:104px;
+    border-radius:26px;
+    margin:0 auto 36px;
+    box-shadow:0 20px 50px -10px rgba(0,0,0,0.5);
+  }
+
+  .status{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--accent);
+    margin-bottom:22px;
+  }
+  .status::before{
+    content:'';
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 10px rgba(171,221,60,0.7);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%, 100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.4; transform:scale(0.8); }
+  }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(24px, 4.5vw, 30px);
+    font-weight:600;
+    line-height:1.35;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+
+  p{
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.65;
+    max-width:340px;
+    margin:0 auto;
+  }
+
+  /* Un solo momento con movimiento: el piso avanza recto y la caja queda fija,
+     con una estela de velocidad detrás, como en el isotipo */
+  .loader{
+    position:relative;
+    width:100%;
+    max-width:300px;
+    height:100px;
+    margin:38px auto 40px;
+    overflow:hidden;
+  }
+  .ground {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 1px;
+  height: 1px;
+  background: #ffffff;
+}
+.road-line {
+  position: absolute;
+  left: -30px; right: -30px;
+  bottom: 6px;
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #ffffff 0, #ffffff 13px,
+    transparent 13px, transparent 28px
+  );
+  animation: road-move 0.65s linear infinite;
+}
+.road-dust {
+  position: absolute;
+  left: -20px; right: -20px;
+  bottom: 0px;
+  height: 3px;
+  background-image: radial-gradient(circle, #ffffff 1px, transparent 1.4px);
+  background-size: 22px 3px;
+  opacity: 0.5;
+  animation: road-move 0.9s linear infinite;
+}
+  @keyframes road-move{
+    from{ background-position-x:0; }
+    to{ background-position-x:-28px; }
+  }
+  .package-img{
+    position:absolute;
+    z-index: 1;
+    inset:0;
+    bottom: 20%;
+    width:auto; height:75%;
+    left: 37%;
+    object-fit:contain;
+    display:block;
+    animation:bounce 0.5s ease-in-out infinite;
+  }
+  
+  @keyframes bounce{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(-2.5px); }
+  }
+  @keyframes shadow-pulse{
+    0%, 100%{ transform:translateX(-50%) scaleX(1); opacity:1; }
+    50%{ transform:translateX(-50%) scaleX(0.85); opacity:0.7; }
+  }
+  @keyframes trail-swoosh{
+    0%, 100%{ opacity:0.85; transform:scaleX(1) translateX(0); }
+    50%{ opacity:0.4; transform:scaleX(0.7) translateX(6px); }
+  }
+  .footer{
+    margin-top:40px;
+    font-size:12px;
+    color:var(--muted);
+    opacity:0.65;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .status::before, .package-img, .package-shadow, .package-trail, .road-line, .road-dust{ animation:none; }
+  }

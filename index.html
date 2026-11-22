@@ -2,32 +2,87 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LoEntrego — Volvemos pronto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#3422A8">
 <meta name="robots" content="noindex">
+<title>LoEntrego — Volvemos en un momento</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="Styles.css">
-<link rel="icon" href="img/Minilogo-transparencia.png">
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Styles.css?v=2">
+<link rel="icon" href="img/icon-192.png">
 </head>
 <body>
-  <div class="wrap">
-    <img class="logo" src="img/LoEntrego2026-logo.png">
-    <div class="status">Mantenimiento programado</div>
 
-    <h1>La plataforma no está disponible temporalmente.</h1>
-    <p>Estamos realizando mejoras en nuestros sistemas para ofrecer un mejor servicio. El acceso se restablecerá en breve.</p>
+<main class="page">
 
-    <div class="loader">
-      <div class="ground"></div>
-      <div class="road-dust"></div>
-      <div class="road-line"></div>
-      <img class="package-img" src="img/Minilogo-transparencia.png">
+  <header class="top">
+    <img class="wordmark" src="img/LoEntrego2026-wordmark.png" alt="LoEntrego — Logística de última milla" width="1383" height="374">
+    <span class="status"><span class="status-dot" aria-hidden="true"></span>Mantenimiento programado</span>
+  </header>
+
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">
+      <span class="line"><span>Estamos haciendo mejoras.</span></span>
+      <span class="line accent"><span>Volvemos en un momento.</span></span>
+    </h1>
+    <p class="lead">Actualizamos la plataforma para que tus envíos sean todavía más rápidos. Mientras tanto, <b>los pedidos en curso siguen en ruta</b>: nuestros repartidores continúan entregando.</p>
+  </section>
+
+  <!-- Escena: la caja va en camino; la ciudad pasa detrás en dos capas -->
+  <div class="scene" aria-hidden="true">
+    <div class="sky-glow"></div>
+    <div class="layer far"><div class="strip">
+      <svg viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M0 90V52h30V30h26v22h18V40h34v50h12V20h30v70h16V46h40v44h10V34h22V14h24v76h14V50h36v40h18V28h28v62h20V44h32v46h16V24h26v66h22V56h30v34z"/></svg>
+      <svg viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M0 90V52h30V30h26v22h18V40h34v50h12V20h30v70h16V46h40v44h10V34h22V14h24v76h14V50h36v40h18V28h28v62h20V44h32v46h16V24h26v66h22V56h30v34z"/></svg>
+    </div></div>
+    <div class="layer near"><div class="strip">
+      <svg viewBox="0 0 600 70" preserveAspectRatio="none"><path d="M0 70V40h44V22h30v48h20V34h50v36h14V12h22v58h26V44h44v26h18V30h34v40h16V18h28v52h24V38h46v32h12V26h24v44h22V46h40v24z"/></svg>
+      <svg viewBox="0 0 600 70" preserveAspectRatio="none"><path d="M0 70V40h44V22h30v48h20V34h50v36h14V12h22v58h26V44h44v26h18V30h34v40h16V18h28v52h24V38h46v32h12V26h24v44h22V46h40v24z"/></svg>
+    </div></div>
+
+    <div class="road">
+      <div class="road-dashes"><i></i><i></i></div>
     </div>
 
-    <div class="footer">© 2026 LoEntrego — Logística de última milla</div>
+    <div class="rider">
+      <span class="speed s1"></span><span class="speed s2"></span><span class="speed s3"></span>
+      <span class="box-shadow"></span>
+      <span class="box"></span>
+    </div>
   </div>
 
+  <section class="actions" aria-label="Opciones">
+    <div class="retry">
+      <button type="button" class="btn btn-primary" id="retry-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+        Reintentar ahora
+      </button>
+      <p class="retry-note" id="retry-note" aria-live="polite">Lo intentaremos de nuevo automáticamente en <b id="countdown">60</b> s.</p>
+    </div>
+
+    <div class="help">
+      <p class="help-title">¿Necesitas ayuda con un envío?</p>
+      <div class="help-links">
+        <a class="help-link" href="https://wa.me/573101234567" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4Z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1.3 2 .9c-.3 1.3-1.4 2-2.7 1.8-3-.5-5.7-3.2-6.2-6.2-.2-1.3.5-2.4 1.8-2.7l.9 2Z"/></svg>
+          WhatsApp
+        </a>
+        <a class="help-link" href="mailto:contacto@loentrego.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+          contacto@loentrego.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span class="isotipo" aria-hidden="true"></span>
+    © 2026 LoEntrego · Logística de última milla
+  </footer>
+
+</main>
+
+<script src="Script.js?v=2"></script>
 </body>
 </html>

@@ -21,9 +21,6 @@
   --city: rgba(255, 255, 255, 0.08);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  /* PERILLAS de la pila de cajas */
-  --ciclo: 6s;          /* duración de un despacho completo */
-  --repeticiones: 6;    /* cuántas veces se repite antes de quedarse quieta */
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
@@ -158,47 +155,35 @@ body {
   animation: rise 0.9s var(--ease) 0.25s both;
 }
 
-/* Escena: pila de cajas sobre una ciudad quieta */
+/* Escena: la caja va en camino; la ciudad pasa detrás en dos capas */
 .scene {
   position: relative;
   flex: 1;
-  min-height: 230px;
-  background: radial-gradient(60% 70% at 50% 100%, rgba(181, 219, 46, 0.12), transparent 70%);
+  min-height: 210px;
   border-bottom: 1px solid var(--glass-line);
   overflow: hidden;
 }
-.city { position: absolute; left: 0; right: 0; bottom: 30px; width: 100%; height: 42%; fill: var(--city); }
-.ground {
+.sky-glow { position: absolute; left: 50%; bottom: 10px; width: 280px; height: 140px; margin-left: -140px; background: radial-gradient(closest-side, rgba(181, 219, 46, 0.14), transparent); }
+.layer { position: absolute; left: 0; right: 0; bottom: 30px; }
+.strip { display: flex; width: 200%; }
+.strip svg { width: 50%; flex-shrink: 0; }
+.far .strip svg { height: 110px; fill: rgba(255, 255, 255, 0.06); }
+.near .strip svg { height: 74px; fill: rgba(255, 255, 255, 0.11); }
+.far .strip { animation: slide 38s linear infinite; }
+.near .strip { animation: slide 20s linear infinite; }
+.ground { position: absolute; left: 0; right: 0; bottom: 28px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45) 20%, rgba(255, 255, 255, 0.45) 80%, transparent); }
+.rider { position: absolute; left: 50%; bottom: 30px; width: 84px; height: 84px; margin-left: -42px; }
+.rider .box {
   position: absolute;
-  left: 8%; right: 8%; bottom: 30px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45) 20%, rgba(255, 255, 255, 0.45) 80%, transparent);
-}
-
-.stack { position: absolute; left: 50%; bottom: 32px; width: 120px; height: 178px; margin-left: -60px; }
-.stack-shadow {
-  position: absolute;
-  left: 50%; bottom: -8px;
-  width: 110px; height: 14px;
-  margin-left: -55px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(6, 3, 30, 0.5), transparent);
-  animation: shadow var(--ciclo) var(--ease) 1s var(--repeticiones);
-}
-.box {
-  position: absolute;
-  left: 50%;
-  aspect-ratio: 553 / 544;
+  inset: 0;
   background: #fff;
   -webkit-mask: url("img/isotipo.png") center / contain no-repeat;
           mask: url("img/isotipo.png") center / contain no-repeat;
-  filter: drop-shadow(0 8px 12px rgba(6, 3, 30, 0.3));
   transform-origin: 50% 100%;
+  animation: hop 0.7s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+  filter: drop-shadow(0 8px 12px rgba(6, 3, 30, 0.35));
 }
-.b1 { bottom: 0;     width: 78px; margin-left: -39px; animation: bump var(--ciclo) var(--ease) 1s var(--repeticiones); }
-.b2 { bottom: 72px;  width: 62px; margin-left: -27px; animation: bump var(--ciclo) var(--ease) 1.03s var(--repeticiones); }
-.b3 { bottom: 130px; width: 46px; margin-left: -26px; animation: dispatch var(--ciclo) linear 1s var(--repeticiones); }
+.box-shadow { position: absolute; left: 50%; bottom: -6px; width: 72px; height: 10px; margin-left: -36px; border-radius: 50%; background: radial-gradient(closest-side, rgba(6, 3, 30, 0.5), transparent); animation: shadow-hop 0.7s cubic-bezier(0.3, 0, 0.3, 1) infinite; }
 
 /* ---------- Estado del servicio ---------- */
 .service { padding: 1rem 1.25rem 1.125rem; }
@@ -239,23 +224,22 @@ body {
           mask: url("img/isotipo.png") center / contain no-repeat;
 }
 
-/* ---------- Escritorio: dos columnas de igual altura ---------- */
+/* ---------- Escritorio: un bloque centrado, columnas de igual altura ---------- */
+.center { display: flex; flex-direction: column; gap: 1.75rem; }
 @media (min-width: 960px) {
-  .page { max-width: 1120px; padding: clamp(1.5rem, 4vh, 2.5rem) 3rem 1.5rem; gap: clamp(1.5rem, 4vh, 2.5rem); }
+  .page { max-width: 1080px; padding: 1.5rem 3rem 1.25rem; justify-content: center; }
+  .center { margin: auto 0; gap: 2.25rem; }
   .layout {
-    flex: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
-    gap: clamp(2.5rem, 5vw, 4.5rem);
-    max-height: 640px;
+    gap: 3rem;
   }
-  .copy { justify-content: space-between; padding: 0.5rem 0; }
-  .hero { margin-top: auto; }
+  .copy { justify-content: center; gap: 2rem; padding: 0.5rem 0; }
   .hero h1 { font-size: clamp(2.5rem, min(1.3rem + 2.1vw, 6.2vh), 3.25rem); }
   .lead { font-size: 1.125rem; }
-  .actions { margin-top: auto; }
-  .scene { min-height: 0; }
+  .scene { min-height: 240px; }
+  .foot { margin-top: 0; }
 }
 
 /* ---------- Animaciones ---------- */
@@ -263,32 +247,16 @@ body {
 @keyframes line-up { from { transform: translateY(110%); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* La caja de arriba se agacha, sale volando y cae una nueva con rebote */
-@keyframes dispatch {
-  0%, 46%  { transform: none; opacity: 1; animation-timing-function: ease-out; }
-  50%      { transform: translateY(3px) scale(1.07, 0.9); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
-  62%      { transform: translate(190px, -170px) rotate(30deg); opacity: 1; }
-  63%      { transform: translate(190px, -170px) rotate(30deg); opacity: 0; }
-  64%      { transform: translateY(-240px) rotate(-16deg); opacity: 0; animation-timing-function: ease-out; }
-  66%      { transform: translateY(-240px) rotate(-16deg); opacity: 1; animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.5); }
-  76%      { transform: translateY(0) rotate(0); animation-timing-function: ease-out; }
-  80%      { transform: translateY(-16px) rotate(2deg); animation-timing-function: ease-in; }
-  84%      { transform: translateY(0) scale(1.06, 0.92); animation-timing-function: ease-out; }
-  88%, 100% { transform: none; }
+@keyframes slide { to { transform: translateX(-50%); } }
+/* La caja da saltitos con "aplaste" al tocar el piso */
+@keyframes hop {
+  0%   { transform: translateY(0) scale(1.06, 0.92); }
+  15%  { transform: translateY(-4px) scale(0.97, 1.04); }
+  50%  { transform: translateY(-14px) rotate(-3deg) scale(1, 1); }
+  85%  { transform: translateY(-2px) scale(0.98, 1.02); }
+  100% { transform: translateY(0) scale(1.06, 0.92); }
 }
-/* Las de abajo se aplastan un instante cuando cae la nueva */
-@keyframes bump {
-  0%, 75%  { transform: none; }
-  77%      { transform: scale(1.04, 0.93); }
-  81%      { transform: none; }
-  84%      { transform: scale(1.02, 0.97); }
-  88%, 100% { transform: none; }
-}
-@keyframes shadow {
-  0%, 75%  { transform: none; }
-  77%      { transform: scaleX(1.12); }
-  82%, 100% { transform: none; }
-}
+@keyframes shadow-hop { 0%, 100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(0.7); opacity: 0.5; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }

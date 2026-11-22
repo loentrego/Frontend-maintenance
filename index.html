@@ -9,13 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="Styles.css?v=4">
+<link rel="stylesheet" href="Styles.css?v=5">
 <link rel="icon" href="img/icon-192.png">
 </head>
 <body>
 
 <main class="page">
 
+  <div class="center">
   <header class="top">
     <img class="wordmark" src="img/LoEntrego2026-wordmark.png" alt="LoEntrego — Logística de última milla" width="1383" height="374">
     <span class="status"><span class="status-dot" aria-hidden="true"></span>Mantenimiento programado</span>
@@ -57,14 +58,20 @@
     <!-- Columna derecha: pila de cajas + estado del servicio -->
     <aside class="visual" aria-label="Estado de LoEntrego">
       <div class="scene" aria-hidden="true">
-        <svg class="city" viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M0 90V52h30V30h26v22h18V40h34v50h12V20h30v70h16V46h40v44h10V34h22V14h24v76h14V50h36v40h18V28h28v62h20V44h32v46h16V24h26v66h22V56h30v34z"/></svg>
-        <div class="stack">
-          <span class="stack-shadow"></span>
-          <span class="box b1"></span>
-          <span class="box b2"></span>
-          <span class="box b3"></span>
-        </div>
+        <div class="sky-glow"></div>
+        <div class="layer far"><div class="strip">
+          <svg viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M0 90V52h30V30h26v22h18V40h34v50h12V20h30v70h16V46h40v44h10V34h22V14h24v76h14V50h36v40h18V28h28v62h20V44h32v46h16V24h26v66h22V56h30v34z"/></svg>
+          <svg viewBox="0 0 600 90" preserveAspectRatio="none"><path d="M0 90V52h30V30h26v22h18V40h34v50h12V20h30v70h16V46h40v44h10V34h22V14h24v76h14V50h36v40h18V28h28v62h20V44h32v46h16V24h26v66h22V56h30v34z"/></svg>
+        </div></div>
+        <div class="layer near"><div class="strip">
+          <svg viewBox="0 0 600 70" preserveAspectRatio="none"><path d="M0 70V40h44V22h30v48h20V34h50v36h14V12h22v58h26V44h44v26h18V30h34v40h16V18h28v52h24V38h46v32h12V26h24v44h22V46h40v24z"/></svg>
+          <svg viewBox="0 0 600 70" preserveAspectRatio="none"><path d="M0 70V40h44V22h30v48h20V34h50v36h14V12h22v58h26V44h44v26h18V30h34v40h16V18h28v52h24V38h46v32h12V26h24v44h22V46h40v24z"/></svg>
+        </div></div>
         <div class="ground"></div>
+        <div class="rider">
+          <span class="box-shadow"></span>
+          <span class="box"></span>
+        </div>
       </div>
 
       <div class="service">
@@ -77,6 +84,7 @@
       </div>
     </aside>
 
+  </div>
   </div>
 
   <footer class="foot">

@@ -20,7 +20,7 @@
   const LIMA = '181, 219, 46';
   // entregas a la vez: si el lienzo es angosto la ciudad se ve chica y van menos para que no se amontonen
   // (en celular el lienzo es más ancho que la pantalla, así que van todas)
-  const ENTREGAS = () => (W < 700 ? 14 : 40);
+  const ENTREGAS = () => (W < 700 ? 10 : 28);   // 30 % menos rayitas que en la web
   // ¿El planeta va al lado del texto o solo? Se mira la disposición real en pantalla.
   const texto = document.querySelector('.hero-texto');
   const alLado = () => {
@@ -53,7 +53,7 @@
     const pts = e.r.p, n = pts.length - 1;
     const k = (t - e.t0) / e.r.d;
     if (k < 0) return true;
-    if (k > 1) { if (k < 1.3 && rnd() < 0.3) pings.push({ p: e.reves ? pts[0] : pts[n], t }); return false; }
+    if (k > 1) { if (k < 1.3 && rnd() < 0.21)   /* 30 % menos llegadas (nodos) */ pings.push({ p: e.reves ? pts[0] : pts[n], t }); return false; }
     const len = Math.min(16, Math.max(4, n * 0.4)), head = k * (n + len), tail = head - len;
     const en = (f) => {            // posición continua sobre la trayectoria
       if (e.reves) f = n - f;

@@ -231,3 +231,9 @@ body {
 @media (max-width: 699px) {
   .planeta { margin-top: clamp(40px, 9dvh, 84px); }
 }
+/* Celular: el bloque de texto se centra en el espacio entre el encabezado y el planeta */
+@media (max-width: 699px) {
+  .hero { margin-block: auto; position: relative; top: clamp(36px, 5.3dvh, 48px); }
+  .planeta-wrap { flex: 0 0 clamp(150px, 31dvh, 300px); }
+  .planeta { margin-top: clamp(16px, 3dvh, 32px); }
+}

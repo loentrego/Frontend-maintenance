@@ -18,7 +18,8 @@
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext('2d');
   const LIMA = '181, 219, 46';
-  const ENTREGAS = 40;                                    // entregas a la vez
+  // entregas a la vez: en pantallas angostas la ciudad se ve chica, van menos para que no se amontonen
+  const ENTREGAS = () => (W < 700 ? 14 : 40);
   // ¿El planeta va al lado del texto o solo? Se mira la disposición real en pantalla.
   const texto = document.querySelector('.hero-texto');
   const alLado = () => {
@@ -99,7 +100,7 @@
     if (!rutas.length) return;
     dibujarSatelites(t);
     ctx.lineCap = 'round';
-    while (entregas.length < ENTREGAS) entregas.push(nueva(t));
+    while (entregas.length < ENTREGAS()) entregas.push(nueva(t));
     entregas = entregas.filter((e) => dibujarEntrega(e, t));
     for (let i = pings.length - 1; i >= 0; i--) {
       const pg = pings[i], k = (t - pg.t) / 1.2;
@@ -129,7 +130,7 @@
     const v = canvas.dataset.vista || (alLado() ? 'oblicuo' : 'frontal');   // data-vista fuerza una vista
     if (v === variante) return;
     variante = v;
-    canvas.style.backgroundImage = `url(${base}IMG/planeta-${v}.png?v=1)`;
+    canvas.style.backgroundImage = `url(${base}IMG/planeta-${v}.png?v=2)`;
     entregas = []; pings.length = 0;
     const usar = (d) => {
       if (variante !== v) return;
@@ -139,7 +140,7 @@
     };
     if (cache[v]) { usar(cache[v]); return; }
     rutas = [];
-    fetch(`${base}Scripts/planeta-${v}.json?v=1`)
+    fetch(`${base}Scripts/planeta-${v}.json?v=2`)
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((d) => {
         d.rutasListas = d.rutas.map((r) => ({ a: r.a, d: r.d, p: deshacer(r.p) }));

@@ -171,4 +171,4 @@ body {
 @media (min-width: 700px) {
   .foot { align-self: center; padding: 8px 16px; border-radius: 999px; background: rgba(18, 12, 82, 0.7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 }
-.kicker { border-color: rgba(255, 176, 136, 0.55); color: #FFC2A3; }
+.kicker { border-color: rgba(255, 138, 31, 0.55); color: #FFB066; }

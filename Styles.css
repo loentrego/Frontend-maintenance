@@ -225,5 +225,5 @@ body {
 /* Celular: el planeta un poco más grande que la pantalla (centrado), para que la ciudad se lea */
 @media (max-width: 699px) {
   .planeta-wrap { justify-content: center; }
-  .planeta { width: 150%; max-width: none; }
+  .planeta { width: 230%; max-width: none; }
 }

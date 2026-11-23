@@ -18,7 +18,8 @@
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext('2d');
   const LIMA = '181, 219, 46';
-  // entregas a la vez: en pantallas angostas la ciudad se ve chica, van menos para que no se amontonen
+  // entregas a la vez: si el lienzo es angosto la ciudad se ve chica y van menos para que no se amontonen
+  // (en celular el lienzo es más ancho que la pantalla, así que van todas)
   const ENTREGAS = () => (W < 700 ? 14 : 40);
   // ¿El planeta va al lado del texto o solo? Se mira la disposición real en pantalla.
   const texto = document.querySelector('.hero-texto');

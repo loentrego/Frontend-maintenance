@@ -27,8 +27,6 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(60% 45% at 50% 0%, rgba(120, 100, 255, 0.35), transparent 70%),
-    radial-gradient(45% 35% at 0% 60%, rgba(181, 219, 46, 0.07), transparent 70%),
     linear-gradient(180deg, #2A1C9A 0%, #1B1370 40%, var(--noche) 100%);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
@@ -133,7 +131,7 @@ body::before {
 /* ---------- Planeta ---------- */
 .planeta-wrap { position: relative; z-index: 1; margin: clamp(0.5rem, 3vh, 2rem) calc(-1 * clamp(1.25rem, 5vw, 4rem)) 0; flex: 1; display: flex; align-items: flex-end; }
 .planeta {
-  display: block; width: 100%; aspect-ratio: 16 / 7;
+  display: block; width: 100%; aspect-ratio: 2 / 1;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 78%, transparent 100%);
           mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 78%, transparent 100%);
   animation: aparecer 1.2s var(--ease) 0.3s both;
@@ -172,7 +170,7 @@ body::before {
   .planeta-wrap {
     position: absolute; z-index: 0; left: 0; right: 0; margin: 0;
     /* se ve como mucho el 70 % superior del planeta y nunca más del 42 % de la altura */
-    top: calc(100dvh - min(30.6vw, 42dvh));
+    top: calc(100dvh - min(28vw, 36dvh));
   }
   .planeta { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%); mask-image: linear-gradient(to bottom, transparent 0, #000 14%); }
   .foot { margin-top: auto; }
@@ -180,3 +178,4 @@ body::before {
 @media (min-width: 700px) {
   .foot { align-self: center; padding: 8px 16px; border-radius: 999px; background: rgba(18, 12, 82, 0.7); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 }
+.kicker { border-color: rgba(255, 138, 31, 0.55); color: #FFB066; }

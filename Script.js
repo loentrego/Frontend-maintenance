@@ -14,6 +14,17 @@
     setTimeout(() => window.location.reload(), 700);
   });
 
+  // ---------- Estado de cada canal (editar aquí) ----------
+  //  estado: 'ok' (activo) · 'warn' (en mantenimiento) · 'fail' (sin servicio)
+  const ESTADO = [
+    { canal: 'App LoEntrego', estado: 'warn', texto: 'En mantenimiento' },
+    { canal: 'Página web', estado: 'ok', texto: 'Activa' },
+    { canal: 'Operación', estado: 'ok', texto: 'Funcionando' },
+    { canal: 'Atención', estado: 'ok', texto: 'WhatsApp y correo activos' },
+  ];
+  const lista = $('service');
+  if (lista) lista.innerHTML = ESTADO.map((c) => `<li><span class="svc-dot ${c.estado}" aria-hidden="true"></span><span><b>${c.canal}</b><small>${c.texto}</small></span></li>`).join('');
+
   const page = document.querySelector('.page');
   const crudo = (page?.dataset.regreso || '').trim();
   if (!crudo) return;

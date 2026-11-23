@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="Styles.css?v=13">
-<link rel="preload" href="IMG/planeta-frontal.webp?v=4" as="image" type="image/webp">
+<link rel="stylesheet" href="Styles.css?v=14">
+<link rel="preload" href="IMG/planeta-mantenimiento.png?v=1" as="image" type="image/png">
 <link rel="icon" href="img/icon-192.png">
 </head>
 <body>
@@ -27,12 +27,12 @@
   </header>
 
   <section class="hero" aria-labelledby="title">
-    <p class="kicker">Mejoras en la app</p>
+    <p class="kicker">Mantenimiento</p>
     <h1 id="title">
       <span class="line"><span>Estamos mejorando.</span></span>
       <span class="line accent"><span>Volvemos pronto.</span></span>
     </h1>
-    <p class="lead">La app está en pausa por unos minutos, pero <b>tus pedidos siguen en ruta</b>: nuestros repartidores no se detienen.</p>
+    <p class="lead">Este recurso está en mantenimiento por unos minutos. <b>La operación sigue funcionando</b> y puedes escribirnos por nuestros canales de atención.</p>
 
     <div class="eta" role="status" aria-live="polite">
       <div class="eta-ring" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19"/><circle class="eta-arc" cx="22" cy="22" r="19" pathLength="100"/></svg></div>
@@ -54,16 +54,13 @@
       </a>
     </div>
 
-    <ul class="service" aria-label="Estado del servicio">
-      <li><span class="svc-dot warn" aria-hidden="true"></span><span><b>App LoEntrego</b><small>En mantenimiento</small></span></li>
-      <li><span class="svc-dot ok" aria-hidden="true"></span><span><b>Entregas en curso</b><small>Funcionando</small></span></li>
-      <li><span class="svc-dot ok" aria-hidden="true"></span><span><b>Atención</b><small>WhatsApp y correo</small></span></li>
-    </ul>
+    <!-- Estado de cada canal: se configura en Script.js (ESTADO) -->
+    <ul class="service" id="service" aria-label="Estado de los canales"></ul>
   </section>
 
   <!-- Bogotá desde el espacio: las entregas siguen moviéndose -->
   <div class="planeta-wrap" aria-hidden="true">
-    <canvas id="planeta" class="planeta" data-vista="frontal"></canvas>
+    <canvas id="planeta" class="planeta" data-vista="mantenimiento"></canvas>
   </div>
 
   <footer class="foot">
@@ -74,7 +71,7 @@
 
 </main>
 
-<script src="Script.js?v=5"></script>
-<script src="Scripts/planeta.js?v=3" defer></script>
+<script src="Script.js?v=6"></script>
+<script src="Scripts/planeta.js?v=4" defer></script>
 </body>
 </html>

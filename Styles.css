@@ -174,3 +174,13 @@ body {
 .kicker { border-color: rgba(181, 219, 46, 0.55); color: #B5DB2E; }
 .svc-dot.fail { background: #FF6B83; box-shadow: 0 0 0 4px rgba(255, 107, 131, 0.2); }
 .service { max-width: 860px; }
+/* Escritorio: el bloque sube para no chocar con el planeta (planeta y ciudad no se mueven) */
+@media (min-width: 700px) {
+  .hero { margin-top: clamp(0.25rem, 2.5vh, 1.5rem) !important; }
+  .kicker { margin-bottom: 0.6rem; }
+  .hero h1 { font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4.25rem); }
+  .lead { margin-top: 0.75rem; }
+  .eta { margin-top: 1.1rem; }
+  .actions { margin-top: 1rem; }
+  .service { margin-top: 1rem; }
+}

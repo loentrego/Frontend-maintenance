@@ -229,5 +229,5 @@ body {
 }
 /* Celular: el planeta baja un poco para que quede aire entre los estados y el horizonte (abajo se corta) */
 @media (max-width: 699px) {
-  .planeta { margin-top: clamp(18px, 4.5dvh, 44px); }
+  .planeta { margin-top: clamp(40px, 9dvh, 84px); }
 }
